@@ -37,9 +37,6 @@ export default function Navbar() {
           </Link>
           
           <div className={`hidden md:flex space-x-8 ${textColor}`}>
-            <Link href="/services" className="hover:opacity-80">
-              Services
-            </Link>
             <Link href="/projects" className="hover:opacity-80">
               Projects
             </Link>
