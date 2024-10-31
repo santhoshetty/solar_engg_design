@@ -15,42 +15,42 @@ const steps = [
     title: "Site Survey",
     description: "Drone inspection and site assessment",
     tools: "DJI Phantom 4 RTK, Pix4D",
-    color: "bg-blue-500"
+    color: "bg-gradient-to-br from-blue-500 to-blue-600"
   },
   {
     icon: FileSearch,
     title: "Feasibility Analysis",
     description: "Technical and financial evaluation",
     tools: "PVsyst, HelioScope, Excel",
-    color: "bg-green-500"
+    color: "bg-gradient-to-br from-emerald-500 to-emerald-600"
   },
   {
     icon: Ruler,
     title: "Preliminary Design",
     description: "Initial layout and system sizing",
     tools: "AutoCAD, SketchUp Pro",
-    color: "bg-purple-500"
+    color: "bg-gradient-to-br from-indigo-500 to-indigo-600"
   },
   {
     icon: Zap,
     title: "Electrical Design",
     description: "Detailed electrical engineering",
     tools: "AutoCAD Electrical, ETAP",
-    color: "bg-orange-500"
+    color: "bg-gradient-to-br from-amber-500 to-amber-600"
   },
   {
     icon: Cog,
     title: "Structural Analysis",
     description: "Load calculations and mounting design",
     tools: "STAAD.Pro, RISA 3D",
-    color: "bg-red-500"
+    color: "bg-gradient-to-br from-rose-500 to-rose-600"
   },
   {
     icon: FileCheck2,
     title: "Final Documentation",
     description: "Complete engineering package",
     tools: "Adobe Acrobat, Bluebeam Revu",
-    color: "bg-teal-500"
+    color: "bg-gradient-to-br from-teal-500 to-teal-600"
   }
 ];
 
@@ -64,7 +64,7 @@ export default function ProcessTimeline() {
         
         <div className="relative">
           {/* Timeline line with gradient */}
-          <div className="absolute top-[88px] left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-teal-500" />
+          <div className="absolute top-[88px] left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-amber-500 to-teal-500" />
           
           {/* Steps */}
           <div className="relative flex justify-between">
@@ -81,10 +81,11 @@ export default function ProcessTimeline() {
                     w-20 h-20 rounded-full 
                     ${step.color} shadow-lg 
                     flex items-center justify-center 
-                    border-4 border-white 
+                    border-2 border-white
                     relative z-10 mb-8
                     transform transition-all duration-300
-                    group-hover:scale-110 group-hover:shadow-xl
+                    group-hover:scale-110 group-hover:shadow-2xl
+                    group-hover:border-opacity-100
                     cursor-pointer
                   `}>
                     <Icon className="w-10 h-10 text-white" />
@@ -96,7 +97,7 @@ export default function ProcessTimeline() {
                     <p className="text-sm text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       {step.description}
                     </p>
-                    <p className="text-xs text-primary font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-xs font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gray-500">
                       Tools: {step.tools}
                     </p>
                   </div>
