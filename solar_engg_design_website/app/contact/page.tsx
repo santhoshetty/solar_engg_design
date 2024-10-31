@@ -4,6 +4,24 @@ import { useState } from 'react';
 import Hero from '@/app/components/Hero';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
+const offices = [
+  {
+    name: "India (HQ)",
+    address: "#74, 2nd Cross, Sapthagiri county layout,\nUttarahalli, Bengaluru, 560060",
+    phone: "+91 91106 60658"
+  },
+  {
+    name: "Netherlands",
+    address: "Manis Krijgsmanhof 30,\n5233BS Den Bosch, Netherlands",
+    phone: "+31 85 060 3859"
+  },
+  {
+    name: "USA",
+    address: "539 W Commerce St #5249,\nDallas, TX 75208, USA",
+    phone: "+1 469 606 1283"
+  }
+];
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -41,26 +59,25 @@ export default function ContactPage() {
           <div>
             <h2 className="text-2xl font-bold mb-8">Get in Touch</h2>
             
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <MapPin className="w-6 h-6 text-primary mt-1" />
-                <div>
-                  <h3 className="font-semibold mb-1">Office Location</h3>
-                  <p className="text-muted-foreground">
-                    123 Solar Street<br />
-                    San Francisco, CA 94105<br />
-                    United States
-                  </p>
-                </div>
-              </div>
+            <div className="space-y-12">
+              {offices.map((office) => (
+                <div key={office.name} className="space-y-4">
+                  <div className="flex items-start space-x-4">
+                    <MapPin className="w-6 h-6 text-primary mt-1" />
+                    <div>
+                      <h3 className="font-semibold mb-1">{office.name}</h3>
+                      <p className="text-muted-foreground whitespace-pre-line">
+                        {office.address}
+                      </p>
+                    </div>
+                  </div>
 
-              <div className="flex items-start space-x-4">
-                <Phone className="w-6 h-6 text-primary mt-1" />
-                <div>
-                  <h3 className="font-semibold mb-1">Phone</h3>
-                  <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                  <div className="flex items-start space-x-4 ml-10">
+                    <Phone className="w-5 h-5 text-primary mt-1" />
+                    <p className="text-muted-foreground">{office.phone}</p>
+                  </div>
                 </div>
-              </div>
+              ))}
 
               <div className="flex items-start space-x-4">
                 <Mail className="w-6 h-6 text-primary mt-1" />
@@ -75,7 +92,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-semibold mb-1">Business Hours</h3>
                   <p className="text-muted-foreground">
-                    Monday - Friday: 9:00 AM - 6:00 PM PST<br />
+                    Monday - Friday: 9:00 AM - 6:00 PM Local Time<br />
                     Saturday - Sunday: Closed
                   </p>
                 </div>

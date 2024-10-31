@@ -1,5 +1,7 @@
 import Hero from '@/app/components/Hero';
 import Image from 'next/image';
+import { Linkedin } from 'lucide-react';
+import Link from 'next/link';
 
 const values = [
   {
@@ -21,29 +23,19 @@ const values = [
 
 const teamMembers = [
   {
-    name: "Sarah Chen",
-    role: "Founder & CEO",
+    name: "Manoj Payani",
+    role: "Co-Founder & CEO",
     image: "/images/team/sarah-chen.jpg",
-    description: "With over 15 years in solar engineering, Sarah leads 4Solar's vision of excellence and innovation."
+    description: "With over 15 years in solar engineering, Manoj leads 4Solar's vision of excellence and innovation.",
+    linkedin: "https://linkedin.com/in/sarah-chen"
   },
   {
-    name: "Michael Rodriguez",
-    role: "Lead Engineer",
+    name: "Willie Van Aalst",
+    role: "Co-Founder & CTO",
     image: "/images/team/michael-rodriguez.jpg",
-    description: "Michael brings 10+ years of experience in structural engineering and solar system design."
+    description: "Willie brings 10+ years of experience in structural engineering and solar system design.",
+    linkedin: "https://linkedin.com/in/michael-rodriguez"
   },
-  {
-    name: "David Park",
-    role: "Technical Director",
-    image: "/images/team/david-park.jpg",
-    description: "David specializes in electrical engineering and oversees all technical aspects of our projects."
-  },
-  {
-    name: "Emily Thompson",
-    role: "Project Manager",
-    image: "/images/team/emily-thompson.jpg",
-    description: "Emily ensures smooth project execution and client satisfaction with her detail-oriented approach."
-  }
 ];
 
 export default function AboutPage() {
@@ -61,15 +53,35 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold mb-8">Our History</h2>
           <div className="prose prose-lg max-w-none">
             <p className="text-muted-foreground">
-              Founded in 2018, 4Solar emerged from a vision to transform the solar engineering industry. 
-              What began as a small team of dedicated engineers has grown into a leading solar engineering firm, 
-              serving clients across the United States.
+              Founded in 2017 in the Netherlands by Willie van Aalst, 4Solar emerged from a vision to transform 
+              the solar engineering industry. In 2018, Manoj Payani joined the team, bringing additional 
+              leadership and expertise as the current CEO.
             </p>
             <p className="text-muted-foreground mt-4">
-              Our journey started with a focus on residential solar designs, but quickly expanded to include 
-              commercial and utility-scale projects. Through continuous innovation and commitment to excellence, 
-              we've established ourselves as a trusted partner in the renewable energy sector.
+              Since 2021, we've operated from our head office in Bengaluru, India, where our team has grown to 
+              include 10 professional, youthful, and dedicated individuals. Through continuous innovation and 
+              commitment to excellence, we've established ourselves as a trusted partner in the renewable 
+              energy sector.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Global Presence */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8">Global Presence</h2>
+          <div className="relative w-full aspect-[2/1] max-w-5xl mx-auto">
+            <Image
+              src="/images/global-presence.png"
+              alt="4Solar Global Presence"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          <div className="mt-8 text-center text-muted-foreground">
+            <p>Delivering solar engineering excellence across the globe</p>
           </div>
         </div>
       </section>
@@ -104,20 +116,36 @@ export default function AboutPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Our Team</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
             {teamMembers.map((member) => (
               <div 
                 key={member.name}
-                className="text-center"
+                className="text-center group"
               >
-                <div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                  />
+                <div className="relative w-48 h-48 mx-auto mb-4">
+                  {/* Profile Image */}
+                  <div className="rounded-full overflow-hidden">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  
+                  {/* LinkedIn Icon */}
+                  <Link 
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute bottom-0 right-0 p-2 bg-white rounded-full shadow-lg 
+                             transform transition-transform duration-300 
+                             hover:scale-110 hover:bg-blue-50"
+                  >
+                    <Linkedin className="w-5 h-5 text-[#0077b5]" />
+                  </Link>
                 </div>
+                
                 <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
                 <p className="text-primary font-medium mb-2">{member.role}</p>
                 <p className="text-muted-foreground">{member.description}</p>
