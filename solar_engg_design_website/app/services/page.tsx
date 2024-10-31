@@ -30,7 +30,7 @@ export default function ServicesPage() {
       <div 
         className="relative py-20 bg-cover bg-center"
         style={{
-          backgroundImage: 'url("/images/services/main-service.jpg")',
+          backgroundImage: 'url("/images/hero.jpg")',
         }}
       >
         <div className="absolute inset-0 bg-black/40" />
