@@ -46,7 +46,7 @@ const steps = [
     tools: "DJI Phantom 4 RTK, Pix4D",
     color: "bg-gradient-to-br from-blue-500 to-blue-600",
     group: "feasibility",
-    detailedDescription: "Our site survey process involves comprehensive drone mapping and 3D modeling of the installation site. We capture high-resolution imagery and precise measurements to identify optimal panel placement, shading analysis, and structural considerations.",
+    detailedDescription: "High-precision drone mapping and 3D modeling for optimal site assessment. Includes shading analysis, structural evaluation, and precise measurements for maximum system efficiency.",
     images: [
       {
         src: "/images/steps/site-survey/drone-mapping.jpg",
@@ -69,7 +69,7 @@ const steps = [
     tools: "PVsyst, HelioScope, Excel",
     color: "bg-gradient-to-br from-emerald-500 to-emerald-600",
     group: "feasibility",
-    detailedDescription: "A Layout Overview Document outlines the physical arrangement of a solar power system, specifying the number and type of solar modules, the quantity and placement of inverters, the location of transformers, and other essential components. It provides a visual guide for stakeholders, aiding in understanding the spatial organization and facilitating effective communication, planning, and maintenance.",
+    detailedDescription: "Comprehensive system layout design specifying module placement, equipment locations, and spatial organization. Includes technical specifications and financial analysis for project viability.",
     images: [
       {
         src: "/images/steps/overview-layout/overview-layout-1.png",
@@ -92,7 +92,7 @@ const steps = [
     tools: "AutoCAD, SketchUp Pro",
     color: "bg-gradient-to-br from-indigo-500 to-indigo-600",
     group: "feasibility",
-    detailedDescription: "A Solar Interconnection SLD Layout provides a concise visual representation of the interconnection of solar power system components. It illustrates the connection and arrangement of solar modules, inverters, transformers and other essential elements in a single-line format.",
+    detailedDescription: "Detailed single-line diagrams illustrating system architecture and electrical interconnections. Ensures compliance with utility requirements and optimal power distribution.",
     images: [
       {
         src: "/images/steps/interconnection-sld/interconnection-sld-1.png",
@@ -111,7 +111,7 @@ const steps = [
     tools: "AutoCAD Electrical, ETAP",
     color: "bg-gradient-to-br from-amber-500 to-amber-600",
     group: "feasibility",
-    detailedDescription: "We elevate your solar project planning and performance assessment with our advanced 3D PVsyst annual yield simulations. Our services go beyond traditional analysis, providing a comprehensive understanding of your solar energy system's potential. Using state-of-the-art PVsyst software, our skilled professionals create detailed 3D simulations that accurately predict annual yield, accounting for factors such as shading, inclination, and geographical location. This meticulous approach ensures a precise evaluation of your project's energy output, enabling you to make informed decisions for optimal efficiency and return on investment. Partner with us to unlock the full capabilities of 3D PVsyst simulations and pave the way for a successful and high-performing solar venture.",
+    detailedDescription: "Advanced 3D modeling and simulation for accurate energy yield predictions. Incorporates shading analysis, weather data, and equipment specifications for performance optimization.",
     images: [
       {
         src: "/images/steps/pvsyst-yield/3d-simulation-1.jpg",
@@ -134,7 +134,7 @@ const steps = [
     tools: "STAAD.Pro, RISA 3D",
     color: "bg-gradient-to-br from-rose-500 to-rose-600",
     group: "permit",
-    detailedDescription: "Enhance your solar project's precision and alignment with our Dimensioning Layout service, where we not only meticulously plan for optimal spacing and orientation but also incorporate detailed dimensions for the site building or landscape. Our experienced team utilizes cutting-edge techniques to ensure accuracy, facilitating a seamless transition from planning to execution. Rely on us for dimensioning layouts that optimize energy capture and seamlessly integrate with your project's architecture.",
+    detailedDescription: "Structural analysis and mounting system design ensuring code compliance and structural integrity. Includes load calculations and mounting specifications for safe installation.",
     images: [
       {
         src: "/images/steps/dimensional-layout/dimensional-layout-1.png",
@@ -153,7 +153,7 @@ const steps = [
     tools: "Adobe Acrobat, Bluebeam Revu",
     color: "bg-gradient-to-br from-teal-500 to-teal-600",
     group: "detail",
-    detailedDescription: "One of our key offerings is the creation of comprehensive string table documents tailored to your solar energy systems. Our expert team provides detailed string table documentation that outlines crucial parameters, ensuring a seamless integration of solar components. From inverter configurations to string numbers, azimuth angles, and tilt orientations, while ensuring optimal overrating. Our string tables serve as a roadmap for your solar endeavors. Trust us to deliver precision and efficiency, guiding you through the intricacies of solar technology to maximize the performance of your sustainable energy solutions.",
+    detailedDescription: "Comprehensive string configuration and inverter assignment documentation. Includes voltage/current calculations and optimization strategies for maximum system efficiency.",
     images: [
       {
         src: "/images/steps/string-table/string-table-1.png",
@@ -176,7 +176,7 @@ const steps = [
     tools: "AutoCAD, PVsyst",
     color: "bg-gradient-to-br from-purple-500 to-purple-600",
     group: "detail",
-    detailedDescription: "These intricately designed plans outline the strategic arrangement of strings, ensuring optimal efficiency and performance across your solar panel array. Trust our expertise to bring precision to your project's design, translating into a seamless and productive solar energy system.",
+    detailedDescription: "Detailed module placement and string connection diagrams. Optimizes system performance through strategic grouping and efficient electrical configuration.",
     images: [
       {
         src: "/images/steps/string-plan/string-plan-1.png",
@@ -199,7 +199,7 @@ const steps = [
     tools: "AutoCAD Electrical, Revit",
     color: "bg-gradient-to-br from-orange-500 to-orange-600",
     group: "detail",
-    detailedDescription: "We strategically plan the trajectory of both alternating current (AC) and direct current (DC) components in your solar energy system. Our detailed layouts ensure an efficient and reliable flow of power, maximizing energy yield while maintaining safety standards. Trust us to design trajectories that harmonize with the unique needs of your project, delivering a well-coordinated and optimized electrical framework.",
+    detailedDescription: "Strategic planning of AC and DC cable routes with support systems. Ensures optimal power transmission while maintaining safety standards and installation efficiency.",
     images: [
       {
         src: "/images/steps/trajectory-layouts/trajectory-layouts-1.png",
@@ -222,7 +222,7 @@ const steps = [
     tools: "ETAP, Excel",
     color: "bg-gradient-to-br from-cyan-500 to-cyan-600",
     group: "detail",
-    detailedDescription: "Our experts harness the power of KABEL++ to ensure accurate assessments of electrical parameters, enhancing the efficiency and reliability of your system. From voltage drop analysis to current-carrying capacity calculations, count on us to deliver robust solutions tailored to your project's unique needs.",
+    detailedDescription: "Complete cable sizing and protection coordination using KABEL++. Includes voltage drop analysis and current capacity calculations for system reliability.",
     images: [
       {
         src: "/images/steps/cabling/cabling-1.jpg",
@@ -268,17 +268,29 @@ export default function ProcessTimeline() {
 
   const nextImage = () => {
     if (activeStep) {
-      setCurrentImageIndex((prev) => 
-        prev === activeStep.images.length - 1 ? 0 : prev + 1
-      );
+      const newIndex = currentImageIndex === activeStep.images.length - 1 ? 0 : currentImageIndex + 1;
+      setCurrentImageIndex(newIndex);
+      // Update selected image if in modal view
+      if (selectedImage) {
+        setSelectedImage({
+          src: activeStep.images[newIndex].src,
+          alt: activeStep.images[newIndex].alt
+        });
+      }
     }
   };
 
   const previousImage = () => {
     if (activeStep) {
-      setCurrentImageIndex((prev) => 
-        prev === 0 ? activeStep.images.length - 1 : prev - 1
-      );
+      const newIndex = currentImageIndex === 0 ? activeStep.images.length - 1 : currentImageIndex - 1;
+      setCurrentImageIndex(newIndex);
+      // Update selected image if in modal view
+      if (selectedImage) {
+        setSelectedImage({
+          src: activeStep.images[newIndex].src,
+          alt: activeStep.images[newIndex].alt
+        });
+      }
     }
   };
 
@@ -466,7 +478,7 @@ export default function ProcessTimeline() {
           className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center"
           onClick={() => setSelectedImage(null)}
         >
-          <div className="relative max-w-7xl max-h-[90vh] w-full mx-4">
+          <div className="relative max-w-7xl max-h-[85vh] w-[85%] mx-4">
             <button
               onClick={() => setSelectedImage(null)}
               className="absolute -top-12 right-0 p-2 text-white hover:text-gray-300 transition-colors"
@@ -481,9 +493,33 @@ export default function ProcessTimeline() {
                 alt={selectedImage.alt}
                 width={1920}
                 height={1080}
-                className="object-contain w-full h-full"
+                className="object-contain w-full h-full scale-85"
                 onClick={(e) => e.stopPropagation()}
               />
+
+              {/* Modal Navigation Arrows */}
+              <div className="absolute inset-0 flex items-center justify-between px-4">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    previousImage();
+                  }}
+                  className="z-20 p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg transform -translate-x-12"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextImage();
+                  }}
+                  className="z-20 p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg transform translate-x-12"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
