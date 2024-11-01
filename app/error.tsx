@@ -11,7 +11,8 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error(error);
+    console.error('Path:', window.location.pathname);
+    console.error('Error:', error);
   }, [error]);
 
   return (
