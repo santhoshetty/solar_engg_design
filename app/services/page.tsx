@@ -1,5 +1,5 @@
 import { SUPABASE_URL } from '@/lib/constants';
-import Hero from '@/app/components/Hero';
+import Hero from '@/components/Hero';
 import ProcessTimeline from '@/components/ProcessTimeline';
 
 export default function ServicesPage() {
