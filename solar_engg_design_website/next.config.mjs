@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
@@ -11,6 +12,7 @@ const nextConfig = {
         pathname: '/storage/v1/object/public/public-assets/**',
       },
     ],
+    unoptimized: true,
   },
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
