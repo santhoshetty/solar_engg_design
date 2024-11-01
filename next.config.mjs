@@ -10,11 +10,7 @@ const nextConfig = {
         pathname: '/storage/v1/object/public/public-assets/**',
       },
     ],
-  },
-  async redirects() {
-    return [
-      // Add any required redirects here
-    ]
+    unoptimized: true,
   },
 };
 
