@@ -30,12 +30,6 @@ export default function CareersPage() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: Implement CV upload logic
-    console.log('File submitted:', selectedFile);
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <Hero
