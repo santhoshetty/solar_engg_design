@@ -1,63 +1,100 @@
 'use client';
-
+import { useState } from 'react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
-  const isHomePage = pathname === '/';
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navBackground = isScrolled
-    ? 'bg-white shadow-md'
-    : isHomePage
-    ? 'bg-transparent'
-    : 'bg-white';
-
-  const textColor = isScrolled || !isHomePage
-    ? 'text-gray-900'
-    : 'text-white';
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${navBackground}`}>
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center">
+    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-md z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          {/* Logo */}
+          <Link href="/" className="flex-shrink-0 flex items-center">
             <Image
               src="/images/logo/4solar-logo.png"
-              alt="4Solar"
+              alt="4Solar Logo"
               width={40}
               height={40}
-              className="mr-2"
+              className="h-8 w-auto"
             />
-            <span className={`font-bold text-xl ${textColor}`}>4Solar</span>
+            <span className="ml-2 text-xl font-semibold text-gray-800">4Solar</span>
           </Link>
-          
-          <div className={`hidden md:flex space-x-8 ${textColor}`}>
-            {!isHomePage && (
-              <Link href="/services" className="hover:opacity-80">
-                Services
-              </Link>
-            )}
-            <Link href="/about" className="hover:opacity-80">
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link href="/services" className="text-gray-700 hover:text-blue-600 transition-colors">
+              Services
+            </Link>
+            <Link href="/about" className="text-gray-700 hover:text-blue-600 transition-colors">
               About
             </Link>
-            <Link href="/careers" className="hover:opacity-80">
-              Careers
+            <Link 
+              href="/contact" 
+              className="text-gray-700 hover:text-blue-600 transition-colors"
+            >
+              Contact Us
             </Link>
-            <Link href="/contact" className="hover:opacity-80">
-              Contact
+          </div>
+
+          {/* Hamburger Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="text-gray-700 hover:text-blue-600 focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {isMenuOpen ? (
+                  <path d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div
+          className={`md:hidden ${
+            isMenuOpen ? 'block' : 'hidden'
+          } pb-4 transition-all duration-300 ease-in-out`}
+        >
+          <div className="flex flex-col space-y-3">
+            <Link
+              href="/services"
+              className="text-gray-700 hover:text-blue-600 transition-colors px-4 py-2 rounded-lg hover:bg-gray-100"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Services
+            </Link>
+            <Link
+              href="/about"
+              className="text-gray-700 hover:text-blue-600 transition-colors px-4 py-2 rounded-lg hover:bg-gray-100"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className="text-gray-700 hover:text-blue-600 transition-colors px-4 py-2 rounded-lg hover:bg-gray-100"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact Us
             </Link>
           </div>
         </div>
