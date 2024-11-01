@@ -23,31 +23,34 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Navigation Links */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          {/* Contact Information */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="font-semibold mb-4">Services</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/services#feasibility">Feasibility Study</Link></li>
-                <li><Link href="/services#permit">Permit Design</Link></li>
-                <li><Link href="/services#detail">Detail Engineering</Link></li>
-              </ul>
+              <h3 className="font-semibold mb-4">Netherlands (HQ)</h3>
+              <p className="text-gray-400">
+                Manis Krijgsmanhof 30,<br />
+                5233BS Den Bosch,<br />
+                Netherlands<br />
+                +31 85 060 3859
+              </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-4">Company</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/about">About Us</Link></li>
-                <li><Link href="/projects">Projects</Link></li>
-                <li><Link href="/careers">Careers</Link></li>
-              </ul>
+              <h3 className="font-semibold mb-4">India</h3>
+              <p className="text-gray-400">
+                #74, 2nd Cross,<br />
+                Sapthagiri County Layout,<br />
+                Uttarahalli, Bengaluru, 560060<br />
+                +91 911 066 0658
+              </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-4">Contact</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/contact">Get in Touch</Link></li>
-                <li>info@4solar.com</li>
-                <li>+1 234 567 8900</li>
-              </ul>
+              <h3 className="font-semibold mb-4">USA</h3>
+              <p className="text-gray-400">
+                539 W Commerce St #5249,<br />
+                Dallas, TX 75208,<br />
+                USA<br />
+                +1 469 606 1283
+              </p>
             </div>
           </div>
         </div>

@@ -50,9 +50,6 @@ export default function Navbar() {
                 Services
               </Link>
             )}
-            <Link href="/projects" className="hover:opacity-80">
-              Projects
-            </Link>
             <Link href="/about" className="hover:opacity-80">
               About
             </Link>
