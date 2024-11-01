@@ -1,57 +1,51 @@
 'use client';
 
 import Image from 'next/image';
+import { SUPABASE_URL } from '@/lib/constants';
 
 const companyLogos = [
-  { src: '/images/companies/company1.png', alt: 'Company 1' },
-  { src: '/images/companies/company2.png', alt: 'Company 2' },
-  { src: '/images/companies/company3.png', alt: 'Company 3' },
-  { src: '/images/companies/company4.png', alt: 'Company 4' },
-  { src: '/images/companies/company5.png', alt: 'Company 5' },
-  { src: '/images/companies/company6.png', alt: 'Company 6' },
+  { src: `${SUPABASE_URL}/images/companies/company1.png`, alt: 'Company 1' },
+  { src: `${SUPABASE_URL}/images/companies/company2.png`, alt: 'Company 2' },
+  { src: `${SUPABASE_URL}/images/companies/company3.png`, alt: 'Company 3' },
+  { src: `${SUPABASE_URL}/images/companies/company4.png`, alt: 'Company 4' },
+  { src: `${SUPABASE_URL}/images/companies/company5.png`, alt: 'Company 5' },
+  { src: `${SUPABASE_URL}/images/companies/company6.png`, alt: 'Company 6' },
 ];
 
 export default function LogoCarousel() {
   return (
-    <div className="absolute bottom-0 left-0 right-0 bg-black/50 backdrop-blur-sm py-8">
-      <div className="max-w-4xl mx-auto px-4">
-        <h3 className="text-white text-center mb-6 text-xl font-semibold">
-          Trusted by Industry Leaders
-        </h3>
-        
-        <div className="relative overflow-hidden">
-          <div className="flex items-center animate-scroll space-x-12 whitespace-nowrap">
-            {/* First set of logos */}
+    <div className="w-full flex justify-center bg-white/80 backdrop-blur-sm py-4">
+      <div className="w-2/3 overflow-hidden">
+        <div className="relative flex">
+          {/* First set of logos */}
+          <div className="flex animate-scroll">
             {companyLogos.map((logo, index) => (
-              <div 
-                key={`set1-${index}`} 
-                className="inline-flex w-32 relative flex-shrink-0"
-                style={{ height: '40px' }}
+              <div
+                key={`logo-1-${index}`}
+                className="flex-shrink-0 mx-8 w-24 h-12 relative"
               >
                 <Image
                   src={logo.src}
                   alt={logo.alt}
-                  width={128}
-                  height={40}
-                  className="object-contain object-center my-auto"
-                  priority={index < 3}
+                  fill
+                  className="object-contain"
                 />
               </div>
             ))}
-            
-            {/* Duplicate set for seamless loop */}
+          </div>
+          
+          {/* Duplicate set of logos for seamless loop */}
+          <div className="flex animate-scroll" aria-hidden="true">
             {companyLogos.map((logo, index) => (
-              <div 
-                key={`set2-${index}`} 
-                className="inline-flex w-32 relative flex-shrink-0"
-                style={{ height: '40px' }}
+              <div
+                key={`logo-2-${index}`}
+                className="flex-shrink-0 mx-8 w-24 h-12 relative"
               >
                 <Image
                   src={logo.src}
                   alt={logo.alt}
-                  width={128}
-                  height={40}
-                  className="object-contain object-center my-auto"
+                  fill
+                  className="object-contain"
                 />
               </div>
             ))}
