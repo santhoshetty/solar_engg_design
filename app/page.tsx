@@ -3,9 +3,9 @@ import LogoCarousel from '@/components/LogoCarousel';
 import Link from 'next/link';
 import { SUPABASE_URL } from '@/lib/constants';
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <main className="relative min-h-screen">
+    <main className="min-h-screen">
       <VideoPlayer 
         videoUrl="/videos/solar-transformation.mp4"
         audioUrl="/audio/background-music.mp3"

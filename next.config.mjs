@@ -11,6 +11,11 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      // Add any required redirects here
+    ]
+  },
 };
 
 export default nextConfig;
