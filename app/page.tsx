@@ -1,6 +1,7 @@
-import Link from 'next/link';
 import VideoPlayer from '@/components/VideoPlayer';
 import LogoCarousel from '@/components/LogoCarousel';
+import Link from 'next/link';
+import { SUPABASE_URL } from '@/lib/constants';
 
 export default function HomePage() {
   return (
@@ -8,7 +9,7 @@ export default function HomePage() {
       <VideoPlayer 
         videoUrl="/videos/solar-transformation.mp4"
         audioUrl="/audio/background-music.mp3"
-        fallbackImage="/images/solar-fallback.jpg"
+        fallbackImage={`${SUPABASE_URL}/images/solar-fallback.jpg`}
       />
       
       {/* Hero Content */}
@@ -32,7 +33,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Logo Carousel - Now in a container with padding */}
+      {/* Logo Carousel */}
       <div className="absolute bottom-0 w-full px-4 py-6">
         <LogoCarousel />
       </div>

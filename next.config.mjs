@@ -13,11 +13,15 @@ const nextConfig = {
       },
     ],
     unoptimized: true,
+    domains: ['your-supabase-domain.supabase.co'],
   },
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
     return config;
   },
+  experimental: {
+    // Add any experimental features you need
+  }
 };
 
 export default nextConfig;
