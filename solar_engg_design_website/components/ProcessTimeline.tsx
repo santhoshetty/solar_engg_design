@@ -480,7 +480,10 @@ export default function ProcessTimeline() {
         >
           <div className="relative w-full h-full max-w-6xl max-h-[90vh] flex items-center justify-center">
             <button
-              onClick={() => setSelectedImage(null)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImage(null);
+              }}
               className="absolute top-0 right-0 p-2 text-white hover:text-gray-300 transition-colors"
               aria-label="Close modal"
             >
