@@ -1,12 +1,10 @@
-import { ReactNode } from 'react';
-
 interface HeroProps {
   title: string;
   description: string;
   imagePath: string;
 }
 
-export default function Hero({ title, description, imagePath }: HeroProps) {
+const Hero = ({ title, description, imagePath }: HeroProps) => {
   return (
     <div 
       className="relative py-20 bg-cover bg-center"
@@ -26,4 +24,6 @@ export default function Hero({ title, description, imagePath }: HeroProps) {
       </div>
     </div>
   );
-} 
+};
+
+export default Hero; 
