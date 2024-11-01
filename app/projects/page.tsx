@@ -1,4 +1,4 @@
-import Hero from '@/app/components/Hero';
+import Hero from '@/components/Hero';
 import ProjectCard from '@/components/ProjectCard';
 import { Project } from '@/components/ProjectCard';
 import { SUPABASE_URL } from '@/lib/constants';

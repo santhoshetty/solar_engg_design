@@ -1,8 +1,8 @@
-import Hero from '@/components/Hero';
+import Hero from '../../components/Hero';
 import Image from 'next/image';
 import { Linkedin } from 'lucide-react';
 import Link from 'next/link';
-import { SUPABASE_URL } from '@/lib/constants';
+import { SUPABASE_URL } from '../../lib/constants';
 
 const values = [
   {
