@@ -309,11 +309,11 @@ export default function ProcessTimeline() {
             {/* Feasibility Study Group Background */}
             <div className="absolute left-0 right-0 top-0 bg-blue-50/50 rounded-t-lg -mx-6 px-6"
               style={{ height: '44%', minHeight: '320px' }}>
-              <div className="flex justify-between items-start pt-4 mb-8">
-                <div className="text-2xl font-semibold text-blue-800">
+              <div className="pt-4 mb-32">
+                <div className="text-2xl font-semibold text-blue-800 mb-3">
                   {phases.feasibility.title}
                 </div>
-                <div className="w-1/3 text-base leading-relaxed text-blue-800/90">
+                <div className="w-2/3 text-base leading-relaxed text-blue-800/90 text-justify">
                   {phases.feasibility.description}
                 </div>
               </div>
@@ -322,11 +322,11 @@ export default function ProcessTimeline() {
             {/* Permit Design Group Background */}
             <div className="absolute left-0 right-0 bg-rose-50/50 -mx-6 px-6"
               style={{ height: '12%', top: '44%', minHeight: '120px' }}>
-              <div className="flex justify-between items-start -mt-8 mb-12">
-                <div className="text-2xl font-semibold text-rose-800">
+              <div className="-mt-8 mb-32">
+                <div className="text-2xl font-semibold text-rose-800 mb-3">
                   {phases.permit.title}
                 </div>
-                <div className="w-1/3 text-base leading-relaxed text-rose-800/90">
+                <div className="w-2/3 text-base leading-relaxed text-rose-800/90 text-justify">
                   {phases.permit.description}
                 </div>
               </div>
@@ -335,18 +335,18 @@ export default function ProcessTimeline() {
             {/* Detail Engineering Group Background */}
             <div className="absolute left-0 right-0 bottom-0 bg-purple-50/50 rounded-b-lg -mx-6 px-6"
               style={{ height: '44%', minHeight: '320px' }}>
-              <div className="flex justify-between items-start pt-4 mb-12 mt-24">
-                <div className="text-2xl font-semibold text-purple-800">
+              <div className="pt-4 mb-32 mt-24">
+                <div className="text-2xl font-semibold text-purple-800 mb-3">
                   {phases.detail.title}
                 </div>
-                <div className="w-1/3 text-base leading-relaxed text-purple-800/90">
+                <div className="w-2/3 text-base leading-relaxed text-purple-800/90 text-justify">
                   {phases.detail.description}
                 </div>
               </div>
             </div>
 
             {/* Timeline */}
-            <div className="relative space-y-8 pt-20">
+            <div className="relative space-y-8 pt-40">
               {steps.map((step, index) => {
                 const nextStep = steps[index + 1];
                 const isLastStepOfPhase = nextStep && step.group !== nextStep.group;
@@ -448,7 +448,7 @@ export default function ProcessTimeline() {
 
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold mb-4">{activeStep.title}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-gray-600 mb-6 leading-relaxed text-justify">
                     {activeStep.detailedDescription}
                   </p>
                   <div className="space-y-4">
