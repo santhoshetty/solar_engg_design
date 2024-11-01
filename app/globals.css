@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Add a safeguard for initial load */
+html, body {
+  @apply antialiased;
+}
+
 :root {
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;

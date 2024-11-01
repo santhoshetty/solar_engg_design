@@ -31,10 +31,11 @@ export default function Navbar() {
             <Link href="/" className="flex items-center">
               <Image
                 src={`${SUPABASE_URL}/images/logo/4solar-logo.png`}
-                alt="4Solar"
+                alt="4Solar Logo"
                 width={40}
                 height={40}
-                className="mr-2"
+                priority
+                className="object-contain"
               />
               <span className="font-semibold text-xl">4Solar</span>
             </Link>
