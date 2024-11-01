@@ -1,4 +1,4 @@
-import Hero from '@/app/components/Hero';
+import Hero from '@/components/Hero';
 import Image from 'next/image';
 import { Linkedin } from 'lucide-react';
 import Link from 'next/link';

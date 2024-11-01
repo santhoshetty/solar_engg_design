@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Hero from '@/app/components/Hero';
+import Hero from '@/components/Hero';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import Image from 'next/image';
 

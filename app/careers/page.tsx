@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Hero from '@/app/components/Hero';
+import Hero from '@/components/Hero';
 import { Upload, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 

@@ -12,10 +12,6 @@ const nextConfig = {
     ],
     unoptimized: true,
   },
-  experimental: {
-    runtime: 'nodejs',
-    serverActions: true,
-  },
 };
 
 export default nextConfig;
