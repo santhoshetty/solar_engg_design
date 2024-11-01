@@ -249,6 +249,22 @@ export default function ProcessTimeline() {
   const [isHoveringPanel, setIsHoveringPanel] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState<{src: string; alt: string} | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // 768px is typical tablet/mobile breakpoint
+    };
+
+    // Check initially
+    checkMobile();
+
+    // Add event listener
+    window.addEventListener('resize', checkMobile);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleStepHover = (step: typeof steps[number] | null) => {
     if (step) {
@@ -303,83 +319,182 @@ export default function ProcessTimeline() {
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">Our Process</h2>
 
-        <div className="relative flex gap-12">
+        <div className={`relative ${isMobile ? 'block' : 'flex gap-12'}`}>
           {/* Main Timeline Section */}
           <div className="flex-1 relative">
-            {/* Feasibility Study Group Background */}
-            <div className="absolute left-0 right-0 top-0 bg-blue-50/50 rounded-t-lg -mx-6 px-6"
-              style={{ height: '44%', minHeight: '320px' }}>
-              <div className="pt-4 mb-32 relative z-20">
-                <div className="text-2xl font-semibold text-blue-800 mb-3">
-                  {phases.feasibility.title}
+            {isMobile ? (
+              // Mobile Phase Headers - Stacked Layout
+              <div className="mb-8 space-y-6">
+                {/* Feasibility Phase */}
+                <div className="bg-blue-50/50 rounded-lg p-6">
+                  <div className="text-2xl font-semibold text-blue-800 mb-3">
+                    {phases.feasibility.title}
+                  </div>
+                  <div className="text-base leading-relaxed text-blue-800/90 text-justify">
+                    {phases.feasibility.description}
+                  </div>
                 </div>
-                <div className="w-2/3 text-base leading-relaxed text-blue-800/90 text-justify">
-                  {phases.feasibility.description}
-                </div>
-              </div>
-            </div>
 
-            {/* Permit Design Group Background */}
-            <div className="absolute left-0 right-0 bg-rose-50/50 -mx-6 px-6"
-              style={{ height: '12%', top: '44%', minHeight: '120px' }}>
-              <div className="-mt-8 mb-32 relative z-20">
-                <div className="text-2xl font-semibold text-rose-800 mb-3">
-                  {phases.permit.title}
+                {/* Permit Phase */}
+                <div className="bg-rose-50/50 rounded-lg p-6">
+                  <div className="text-2xl font-semibold text-rose-800 mb-3">
+                    {phases.permit.title}
+                  </div>
+                  <div className="text-base leading-relaxed text-rose-800/90 text-justify">
+                    {phases.permit.description}
+                  </div>
                 </div>
-                <div className="w-2/3 text-base leading-relaxed text-rose-800/90 text-justify">
-                  {phases.permit.description}
-                </div>
-              </div>
-            </div>
 
-            {/* Detail Engineering Group Background */}
-            <div className="absolute left-0 right-0 bottom-0 bg-purple-50/50 rounded-b-lg -mx-6 px-6"
-              style={{ height: '44%', minHeight: '320px' }}>
-              <div className="pt-4 mb-32 mt-24 relative z-20">
-                <div className="text-2xl font-semibold text-purple-800 mb-3">
-                  {phases.detail.title}
-                </div>
-                <div className="w-2/3 text-base leading-relaxed text-purple-800/90 text-justify">
-                  {phases.detail.description}
+                {/* Detail Phase */}
+                <div className="bg-purple-50/50 rounded-lg p-6">
+                  <div className="text-2xl font-semibold text-purple-800 mb-3">
+                    {phases.detail.title}
+                  </div>
+                  <div className="text-base leading-relaxed text-purple-800/90 text-justify">
+                    {phases.detail.description}
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              // Desktop Phase Backgrounds - Absolute Positioning
+              <>
+                <div className="absolute left-0 right-0 top-0 bg-blue-50/50 rounded-t-lg -mx-6 px-6"
+                  style={{ height: '44%', minHeight: '320px' }}>
+                  <div className="pt-4 mb-32 relative z-20">
+                    <div className="text-2xl font-semibold text-blue-800 mb-3">
+                      {phases.feasibility.title}
+                    </div>
+                    <div className="w-2/3 text-base leading-relaxed text-blue-800/90 text-justify">
+                      {phases.feasibility.description}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute left-0 right-0 bg-rose-50/50 -mx-6 px-6"
+                  style={{ height: '12%', top: '44%', minHeight: '120px' }}>
+                  <div className="-mt-8 mb-32 relative z-20">
+                    <div className="text-2xl font-semibold text-rose-800 mb-3">
+                      {phases.permit.title}
+                    </div>
+                    <div className="w-2/3 text-base leading-relaxed text-rose-800/90 text-justify">
+                      {phases.permit.description}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute left-0 right-0 bottom-0 bg-purple-50/50 rounded-b-lg -mx-6 px-6"
+                  style={{ height: '44%', minHeight: '320px' }}>
+                  <div className="pt-4 mb-32 mt-24 relative z-20">
+                    <div className="text-2xl font-semibold text-purple-800 mb-3">
+                      {phases.detail.title}
+                    </div>
+                    <div className="w-2/3 text-base leading-relaxed text-purple-800/90 text-justify">
+                      {phases.detail.description}
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
 
             {/* Timeline */}
-            <div className="relative space-y-8 pt-40">
+            <div className={`relative space-y-8 ${isMobile ? '' : 'pt-40'}`}>
               {steps.map((step, index) => {
                 const nextStep = steps[index + 1];
                 const isLastStepOfPhase = nextStep && step.group !== nextStep.group;
                 const isFirstStepOfPhase = index > 0 && step.group !== steps[index - 1].group;
+                const isActive = activeStep?.title === step.title;
 
                 return (
                   <div key={step.title}>
                     {isFirstStepOfPhase && <div className="h-24" />}
-                    <div
-                      className={`relative flex items-center ${
-                        index !== steps.length - 1 ? 'pb-8' : ''
-                      } transition-all duration-200 hover:scale-102 cursor-pointer
-                        ${activeStep?.title === step.title ? 'opacity-100' : 'hover:opacity-80'}`}
-                      onMouseEnter={() => handleStepHover(step)}
-                    >
-                      {/* Vertical Line */}
-                      {index !== steps.length - 1 && (
-                        <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-gray-200" />
-                      )}
+                    <div className="space-y-4">
+                      <div
+                        className={`relative flex items-center ${
+                          index !== steps.length - 1 ? 'pb-8' : ''
+                        } transition-all duration-200 hover:scale-102 cursor-pointer
+                          ${isActive ? 'opacity-100' : 'hover:opacity-80'}`}
+                        onClick={() => isMobile ? handleStepHover(isActive ? null : step) : undefined}
+                        onMouseEnter={() => !isMobile && handleStepHover(step)}
+                      >
+                        {/* Vertical Line */}
+                        {index !== steps.length - 1 && (
+                          <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-gray-200" />
+                        )}
 
-                      {/* Icon */}
-                      <div className={`relative z-10 flex items-center justify-center w-12 h-12 rounded-full ${step.color} text-white`}>
-                        <step.icon className="w-6 h-6" />
-                      </div>
+                        {/* Icon */}
+                        <div className={`relative z-10 flex items-center justify-center w-12 h-12 rounded-full ${step.color} text-white`}>
+                          <step.icon className="w-6 h-6" />
+                        </div>
 
-                      {/* Content */}
-                      <div className="ml-8">
-                        <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                        <p className="text-gray-600 mb-2">{step.description}</p>
-                        <div className="text-sm text-gray-500">
-                          Tools: {step.tools}
+                        {/* Content */}
+                        <div className="ml-8">
+                          <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                          <p className="text-gray-600 mb-2">{step.description}</p>
+                          <div className="text-sm text-gray-500">
+                            Tools: {step.tools}
+                          </div>
                         </div>
                       </div>
+
+                      {/* Mobile Detail Panel */}
+                      {isMobile && isActive && (
+                        <div className="ml-14 bg-white rounded-lg shadow-lg overflow-hidden">
+                          {/* Image Gallery */}
+                          <div className="relative h-48 w-full">
+                            <Image
+                              src={step.images[currentImageIndex].src}
+                              alt={step.images[currentImageIndex].alt}
+                              fill
+                              className="object-cover"
+                              priority
+                              onClick={() => setSelectedImage({
+                                src: step.images[currentImageIndex].src,
+                                alt: step.images[currentImageIndex].alt
+                              })}
+                            />
+                            
+                            {/* Navigation Arrows */}
+                            <div className="absolute inset-0 flex items-center justify-between px-4">
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  previousImage();
+                                }}
+                                className="z-20 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
+                                aria-label="Previous image"
+                              >
+                                <ChevronLeft className="w-4 h-4" />
+                              </button>
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  nextImage();
+                                }}
+                                className="z-20 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
+                                aria-label="Next image"
+                              >
+                                <ChevronRight className="w-4 h-4" />
+                              </button>
+                            </div>
+                          </div>
+
+                          <div className="p-4">
+                            <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                              {step.detailedDescription}
+                            </p>
+                            <div className="space-y-2 text-sm">
+                              <div>
+                                <span className="font-semibold text-gray-700">Tools:</span>
+                                <span className="text-gray-600 ml-2">{step.tools}</span>
+                              </div>
+                              <div>
+                                <span className="font-semibold text-gray-700">Phase:</span>
+                                <span className="text-gray-600 ml-2 capitalize">{step.group}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                     {isLastStepOfPhase && (
                       <div className="h-24 relative">
@@ -392,83 +507,85 @@ export default function ProcessTimeline() {
             </div>
           </div>
 
-          {/* Detail Panel */}
-          <div 
-            className="w-[32rem] sticky top-8 h-[calc(100vh-4rem)] transition-all duration-300 overflow-hidden rounded-lg bg-white shadow-lg"
-            onMouseEnter={() => setIsHoveringPanel(true)}
-            onMouseLeave={handlePanelMouseLeave}
-          >
-            {activeStep ? (
-              <div className="h-full overflow-y-auto">
-                {/* Image Gallery */}
-                <div className="relative h-64 w-full">
-                  <button 
-                    className="relative h-full w-full"
-                    onClick={() => {
-                      console.log('Image clicked'); // Debug log
-                      setSelectedImage({
-                        src: activeStep.images[currentImageIndex].src,
-                        alt: activeStep.images[currentImageIndex].alt
-                      });
-                    }}
-                  >
-                    <Image
-                      src={activeStep.images[currentImageIndex].src}
-                      alt={activeStep.images[currentImageIndex].alt}
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </button>
-                  
-                  {/* Navigation Arrows */}
-                  <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        previousImage();
+          {/* Desktop Detail Panel - Only show on non-mobile */}
+          {!isMobile && (
+            <div 
+              className="w-[32rem] sticky top-8 h-[calc(100vh-4rem)] transition-all duration-300 overflow-hidden rounded-lg bg-white shadow-lg"
+              onMouseEnter={() => setIsHoveringPanel(true)}
+              onMouseLeave={handlePanelMouseLeave}
+            >
+              {activeStep ? (
+                <div className="h-full overflow-y-auto">
+                  {/* Image Gallery */}
+                  <div className="relative h-64 w-full">
+                    <button 
+                      className="relative h-full w-full"
+                      onClick={() => {
+                        console.log('Image clicked'); // Debug log
+                        setSelectedImage({
+                          src: activeStep.images[currentImageIndex].src,
+                          alt: activeStep.images[currentImageIndex].alt
+                        });
                       }}
-                      className="z-20 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg pointer-events-auto"
-                      aria-label="Previous image"
                     >
-                      <ChevronLeft className="w-6 h-6" />
+                      <Image
+                        src={activeStep.images[currentImageIndex].src}
+                        alt={activeStep.images[currentImageIndex].alt}
+                        fill
+                        className="object-cover"
+                        priority
+                      />
                     </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        nextImage();
-                      }}
-                      className="z-20 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg pointer-events-auto"
-                      aria-label="Next image"
-                    >
-                      <ChevronRight className="w-6 h-6" />
-                    </button>
+                    
+                    {/* Navigation Arrows */}
+                    <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          previousImage();
+                        }}
+                        className="z-20 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg pointer-events-auto"
+                        aria-label="Previous image"
+                      >
+                        <ChevronLeft className="w-6 h-6" />
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          nextImage();
+                        }}
+                        className="z-20 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg pointer-events-auto"
+                        aria-label="Next image"
+                      >
+                        <ChevronRight className="w-6 h-6" />
+                      </button>
+                    </div>
                   </div>
-                </div>
 
-                <div className="p-8">
-                  <h3 className="text-2xl font-semibold mb-4">{activeStep.title}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed text-justify">
-                    {activeStep.detailedDescription}
-                  </p>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold text-gray-700 mb-2">Tools Used:</h4>
-                      <p className="text-gray-600">{activeStep.tools}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-700 mb-2">Phase:</h4>
-                      <p className="text-gray-600 capitalize">{activeStep.group}</p>
+                  <div className="p-8">
+                    <h3 className="text-2xl font-semibold mb-4">{activeStep.title}</h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed text-justify">
+                      {activeStep.detailedDescription}
+                    </p>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold text-gray-700 mb-2">Tools Used:</h4>
+                        <p className="text-gray-600">{activeStep.tools}</p>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-700 mb-2">Phase:</h4>
+                        <p className="text-gray-600 capitalize">{activeStep.group}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <div className="h-full flex items-center justify-center text-gray-400">
-                <p>Hover over a step to see details</p>
-              </div>
-            )}
-          </div>
+              ) : (
+                <div className="h-full flex items-center justify-center text-gray-400">
+                  <p>Hover over a step to see details</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
