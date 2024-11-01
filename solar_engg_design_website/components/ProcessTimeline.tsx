@@ -390,26 +390,43 @@ export default function ProcessTimeline() {
               <div className="h-full overflow-y-auto">
                 {/* Image Gallery */}
                 <div className="relative h-64 w-full">
-                  <Image
-                    src={activeStep.images[currentImageIndex].src}
-                    alt={activeStep.images[currentImageIndex].alt}
-                    fill
-                    className="object-cover cursor-pointer"
-                    onClick={() => setSelectedImage(activeStep.images[currentImageIndex])}
-                  />
+                  <button 
+                    className="relative h-full w-full"
+                    onClick={() => {
+                      console.log('Image clicked'); // Debug log
+                      setSelectedImage({
+                        src: activeStep.images[currentImageIndex].src,
+                        alt: activeStep.images[currentImageIndex].alt
+                      });
+                    }}
+                  >
+                    <Image
+                      src={activeStep.images[currentImageIndex].src}
+                      alt={activeStep.images[currentImageIndex].alt}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </button>
                   
-                  {/* Navigation Arrows - Made smaller */}
-                  <div className="absolute inset-0 flex items-center justify-between px-4">
+                  {/* Navigation Arrows */}
+                  <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
                     <button
-                      onClick={previousImage}
-                      className="z-20 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        previousImage();
+                      }}
+                      className="z-20 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg pointer-events-auto"
                       aria-label="Previous image"
                     >
                       <ChevronLeft className="w-6 h-6" />
                     </button>
                     <button
-                      onClick={nextImage}
-                      className="z-20 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        nextImage();
+                      }}
+                      className="z-20 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg pointer-events-auto"
                       aria-label="Next image"
                     >
                       <ChevronRight className="w-6 h-6" />
