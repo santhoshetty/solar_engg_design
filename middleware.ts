@@ -2,20 +2,23 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  // Add any required middleware logic here
-  return NextResponse.next();
+  try {
+    // Simple middleware that just forwards the request
+    return NextResponse.next();
+  } catch (error) {
+    console.error('Middleware error:', error);
+    // Return a basic response in case of error
+    return NextResponse.next();
+  }
 }
 
+// Simplify the matcher to only handle essential paths
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except:
-     * 1. /api routes
-     * 2. /_next (Next.js internals)
-     * 3. /fonts (inside public)
-     * 4. /examples (inside public)
-     * 5. all root files inside public (e.g. /favicon.ico)
-     */
-    '/((?!api|_next|fonts|examples|[\\w-]+\\.\\w+).*)',
-  ],
+    // Optional: Add specific paths you want to handle
+    // '/',
+    // '/about',
+    // '/services/:path*',
+    // '/projects/:path*'
+  ]
 }; 
