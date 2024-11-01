@@ -16,6 +16,7 @@ import {
   ChevronRight,
   X
 } from 'lucide-react';
+import { SUPABASE_URL } from '@/lib/constants';
 
 const phases = {
   feasibility: {
@@ -46,18 +47,18 @@ const steps = [
     tools: "DJI Phantom 4 RTK, Pix4D",
     color: "bg-gradient-to-br from-blue-500 to-blue-600",
     group: "feasibility",
-    detailedDescription: "High-precision drone mapping and 3D modeling for optimal site assessment. Includes shading analysis, structural evaluation, and precise measurements for maximum system efficiency.",
+    detailedDescription: "High-precision drone mapping...",
     images: [
       {
-        src: "/images/steps/site-survey/drone-mapping.jpg",
+        src: `${SUPABASE_URL}/images/steps/site-survey/drone-mapping.jpg`,
         alt: "Drone Mapping Process"
       },
       {
-        src: "/images/steps/site-survey/3d-model.jpg",
+        src: `${SUPABASE_URL}/images/steps/site-survey/3d-model.jpg`,
         alt: "3D Site Model"
       },
       {
-        src: "/images/steps/site-survey/shading-analysis.jpg",
+        src: `${SUPABASE_URL}/images/steps/site-survey/shading-analysis.jpg`,
         alt: "Shading Analysis"
       }
     ]

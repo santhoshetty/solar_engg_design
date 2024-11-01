@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { SUPABASE_URL } from '@/lib/constants';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center">
             <Image
-              src="/images/logo/4solar-logo.png"
+              src={`${SUPABASE_URL}/images/logo/4solar-logo.png`}
               alt="4Solar Logo"
               width={40}
               height={40}

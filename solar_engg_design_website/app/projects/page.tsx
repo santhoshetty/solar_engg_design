@@ -1,6 +1,7 @@
 import Hero from '@/app/components/Hero';
 import ProjectCard from '@/components/ProjectCard';
 import { Project } from '@/components/ProjectCard';
+import { SUPABASE_URL } from '@/lib/constants';
 
 // This would typically come from an API or database
 const projects: Project[] = [
@@ -8,7 +9,7 @@ const projects: Project[] = [
     id: 'commercial-rooftop-1',
     title: 'Commercial Rooftop Solar Installation',
     description: 'A 500kW rooftop solar installation for a manufacturing facility, including structural reinforcement and custom mounting solutions.',
-    imageUrl: '/images/projects/commercial-rooftop.jpg',
+    imageUrl: `${SUPABASE_URL}/images/projects/commercial-rooftop.jpg`,
     capacity: '500 kW',
     location: 'Phoenix, AZ',
     completionDate: '2023-06',
@@ -17,7 +18,7 @@ const projects: Project[] = [
     id: 'carport-solar',
     title: 'Solar Carport System',
     description: 'Innovative carport solar design providing both parking shade and renewable energy generation for a corporate campus.',
-    imageUrl: '/images/projects/carport-solar.jpg',
+    imageUrl: `${SUPABASE_URL}/images/projects/carport-solar.jpg`,
     capacity: '250 kW',
     location: 'San Diego, CA',
     completionDate: '2023-08',
@@ -26,7 +27,7 @@ const projects: Project[] = [
     id: 'ground-mount',
     title: 'Ground Mount Solar Farm',
     description: 'Large-scale ground mount solar farm with advanced tracking system and optimal terrain utilization.',
-    imageUrl: '/images/projects/ground-mount.jpg',
+    imageUrl: `${SUPABASE_URL}/images/projects/ground-mount.jpg`,
     capacity: '2 MW',
     location: 'Las Vegas, NV',
     completionDate: '2023-11',
@@ -35,7 +36,7 @@ const projects: Project[] = [
     id: 'industrial-roof',
     title: 'Industrial Rooftop Array',
     description: 'Complex rooftop solar system designed for an industrial facility with multiple roof levels and HVAC integration considerations.',
-    imageUrl: '/images/projects/industrial-roof.jpg',
+    imageUrl: `${SUPABASE_URL}/images/projects/industrial-roof.jpg`,
     capacity: '750 kW',
     location: 'Denver, CO',
     completionDate: '2023-09',
@@ -44,7 +45,7 @@ const projects: Project[] = [
     id: 'school-campus',
     title: 'Educational Campus Solar',
     description: 'Multi-building solar installation across a school campus, combining rooftop and ground-mounted systems with educational monitoring displays.',
-    imageUrl: '/images/projects/school-campus.jpg',
+    imageUrl: `${SUPABASE_URL}/images/projects/school-campus.jpg`,
     capacity: '400 kW',
     location: 'Austin, TX',
     completionDate: '2023-07',
@@ -53,7 +54,7 @@ const projects: Project[] = [
     id: 'agricultural-solar',
     title: 'Agricultural Solar Project',
     description: 'Innovative agrivoltaic system design allowing for dual land use with solar panels installed above active farmland.',
-    imageUrl: '/images/projects/agricultural-solar.jpg',
+    imageUrl: `${SUPABASE_URL}/images/projects/agricultural-solar.jpg`,
     capacity: '1.2 MW',
     location: 'Sacramento, CA',
     completionDate: '2023-10',
@@ -66,7 +67,7 @@ export default function ProjectsPage() {
       <Hero
         title="Our Projects"
         description="Discover our portfolio of successful solar installations"
-        imagePath="/images/hero.jpg"
+        imagePath={`${SUPABASE_URL}/images/hero.jpg`}
       />
 
       <div className="container mx-auto px-4 py-16">

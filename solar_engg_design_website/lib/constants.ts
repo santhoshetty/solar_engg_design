@@ -1,0 +1,1 @@
+export const SUPABASE_URL = "https://xiafttjgrzpgaidayege.supabase.co/storage/v1/object/public/public-assets"; 

@@ -51,41 +51,71 @@
 
 ```plaintext
 solar_engg_design_website
-├── README.md                           # Project overview and setup instructions
-├── app                                 # Next.js routing and page definitions
+├── README.md
+├── app
+│   ├── about
+│   │   └── page.tsx
+│   ├── careers
+│   │   └── page.tsx
+│   ├── components
+│   │   └── Hero.tsx
+│   ├── contact
+│   │   └── page.tsx
 │   ├── favicon.ico
 │   ├── fonts
-│   ├── globals.css                     # Global styling configuration
-│   ├── layout.tsx                      # Main layout with sticky navbar
-│   ├── page.tsx                        # Landing page with video and CTA
-│   ├── about                           # About page for company info
+│   │   ├── GeistMonoVF.woff
+│   │   └── GeistVF.woff
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── not-found.tsx
+│   ├── page.tsx
+│   ├── projects
+│   │   ├── [projectId]
 │   │   └── page.tsx
-│   ├── contact                         # Contact page with form
-│   │   └── page.tsx
-│   ├── projects                        # Project gallery overview page
-│   │   ├── page.tsx
-│   │   └── [projectId].tsx             # Dynamic route for each individual project
-│   └── services                        # Services description page
-│       └── page.tsx
-├── components                          # Reusable UI components
-│   ├── Navbar.tsx                      # Sticky navigation bar component
-│   ├── Footer.tsx                      # Footer component
-│   ├── VideoPlayer.tsx                 # Video component for landing page
-│   ├── ProjectCard.tsx                 # Card component for project gallery
-│   ├── ContactForm.tsx                 # Contact form component
-│   └── ServiceCard.tsx                 # Card component for service descriptions
+│   └── services
+│       ├── detail-engineering
+│       ├── feasibility-study
+│       ├── page.tsx
+│       └── permit-design
+├── components
+│   ├── EmailTemplate.tsx
+│   ├── Footer.tsx
+│   ├── LoadingState.tsx
+│   ├── LogoCarousel.tsx
+│   ├── Navbar.tsx
+│   ├── PDFHeader.tsx
+│   ├── PageTransition.tsx
+│   ├── ProcessTimeline.tsx
+│   ├── ProjectCard.tsx
+│   ├── ServiceCard.tsx
+│   └── VideoPlayer.tsx
+├── components.json
 ├── instructions
-│   └── instructions.md                 # Additional setup or environment configuration
+│   └── instructions.md
 ├── lib
-│   └── utils.ts                        # Utility functions (e.g., email API calls)
-├── public
-│   └── images                          # Static images (e.g., project thumbnails)
+│   ├── constants.ts
+│   └── utils.ts
 ├── next-env.d.ts
-├── next.config.mjs                     # Next.js configuration
+├── next.config.mjs
 ├── package-lock.json
 ├── package.json
 ├── postcss.config.mjs
-├── tailwind.config.ts                  # Tailwind configuration file
+├── public
+│   ├── audio
+│   │   └── background-music.mp3
+│   ├── images
+│   │   ├── about
+│   │   ├── companies
+│   │   ├── global-presence.png
+│   │   ├── hero.jpg
+│   │   ├── logo
+│   │   ├── projects
+│   │   ├── services
+│   │   ├── steps
+│   │   └── team
+│   └── videos
+│       └── solar-transformation.mp4
+├── tailwind.config.ts
 └── tsconfig.json
 ```
 
