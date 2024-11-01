@@ -309,7 +309,7 @@ export default function ProcessTimeline() {
             {/* Feasibility Study Group Background */}
             <div className="absolute left-0 right-0 top-0 bg-blue-50/50 rounded-t-lg -mx-6 px-6"
               style={{ height: '44%', minHeight: '320px' }}>
-              <div className="pt-4 mb-32">
+              <div className="pt-4 mb-32 relative z-20">
                 <div className="text-2xl font-semibold text-blue-800 mb-3">
                   {phases.feasibility.title}
                 </div>
@@ -322,7 +322,7 @@ export default function ProcessTimeline() {
             {/* Permit Design Group Background */}
             <div className="absolute left-0 right-0 bg-rose-50/50 -mx-6 px-6"
               style={{ height: '12%', top: '44%', minHeight: '120px' }}>
-              <div className="-mt-8 mb-32">
+              <div className="-mt-8 mb-32 relative z-20">
                 <div className="text-2xl font-semibold text-rose-800 mb-3">
                   {phases.permit.title}
                 </div>
@@ -335,7 +335,7 @@ export default function ProcessTimeline() {
             {/* Detail Engineering Group Background */}
             <div className="absolute left-0 right-0 bottom-0 bg-purple-50/50 rounded-b-lg -mx-6 px-6"
               style={{ height: '44%', minHeight: '320px' }}>
-              <div className="pt-4 mb-32 mt-24">
+              <div className="pt-4 mb-32 mt-24 relative z-20">
                 <div className="text-2xl font-semibold text-purple-800 mb-3">
                   {phases.detail.title}
                 </div>
@@ -475,36 +475,38 @@ export default function ProcessTimeline() {
       {/* Full Screen Image Modal */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
-          <div className="relative max-w-7xl max-h-[85vh] w-[85%] mx-4">
+          <div className="relative w-full h-full max-w-6xl max-h-[90vh] flex items-center justify-center">
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute -top-12 right-0 p-2 text-white hover:text-gray-300 transition-colors"
+              className="absolute top-0 right-0 p-2 text-white hover:text-gray-300 transition-colors"
               aria-label="Close modal"
             >
               <X className="w-6 h-6" />
             </button>
             
-            <div className="relative h-full w-full">
-              <Image
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                width={1920}
-                height={1080}
-                className="object-contain w-full h-full scale-85"
-                onClick={(e) => e.stopPropagation()}
-              />
+            <div className="relative w-full h-full flex items-center justify-center">
+              <div className="relative w-full h-full flex items-center justify-center">
+                <Image
+                  src={selectedImage.src}
+                  alt={selectedImage.alt}
+                  className="object-contain max-h-full max-w-full"
+                  width={1920}
+                  height={1080}
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </div>
 
               {/* Modal Navigation Arrows */}
-              <div className="absolute inset-0 flex items-center justify-between px-4">
+              <div className="absolute inset-x-0 flex items-center justify-between px-4">
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     previousImage();
                   }}
-                  className="z-20 p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg transform -translate-x-12"
+                  className="z-20 p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-6 h-6" />
@@ -514,7 +516,7 @@ export default function ProcessTimeline() {
                     e.stopPropagation();
                     nextImage();
                   }}
-                  className="z-20 p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg transform translate-x-12"
+                  className="z-20 p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors shadow-lg"
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-6 h-6" />

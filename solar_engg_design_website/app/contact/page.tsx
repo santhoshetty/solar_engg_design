@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Hero from '@/app/components/Hero';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import Image from 'next/image';
 
 const offices = [
   {
@@ -54,6 +55,16 @@ export default function ContactPage() {
       />
 
       <div className="container mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <Image
+            src="/images/logo/4solar-logo.png"
+            alt="4Solar"
+            width={48}
+            height={48}
+            className="mx-auto mb-4"
+          />
+          <h1 className="text-4xl font-bold">Contact Us</h1>
+        </div>
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div>

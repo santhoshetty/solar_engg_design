@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,8 +33,15 @@ export default function Navbar() {
     <nav className={`fixed w-full z-50 transition-all duration-300 ${navBackground}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className={`font-bold text-xl ${textColor}`}>
-            4Solar
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/logo/4solar-logo.png"
+              alt="4Solar"
+              width={40}
+              height={40}
+              className="mr-2"
+            />
+            <span className={`font-bold text-xl ${textColor}`}>4Solar</span>
           </Link>
           
           <div className={`hidden md:flex space-x-8 ${textColor}`}>
