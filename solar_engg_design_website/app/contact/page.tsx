@@ -6,14 +6,14 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 const offices = [
   {
-    name: "India (HQ)",
-    address: "#74, 2nd Cross, Sapthagiri county layout,\nUttarahalli, Bengaluru, 560060",
-    phone: "+91 91106 60658"
-  },
-  {
-    name: "Netherlands",
+    name: "Netherlands (HQ)",
     address: "Manis Krijgsmanhof 30,\n5233BS Den Bosch, Netherlands",
     phone: "+31 85 060 3859"
+  },
+  {
+    name: "India",
+    address: "#74, 2nd Cross, Sapthagiri County Layout,\nUttarahalli, Bengaluru, 560060",
+    phone: "+91 911 066 0658"
   },
   {
     name: "USA",

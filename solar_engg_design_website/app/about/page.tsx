@@ -25,16 +25,16 @@ const teamMembers = [
   {
     name: "Manoj Payani",
     role: "Co-Founder & CEO",
-    image: "/images/team/sarah-chen.jpg",
+    image: "/images/team/manoj.png",
     description: "With over 15 years in solar engineering, Manoj leads 4Solar's vision of excellence and innovation.",
-    linkedin: "https://linkedin.com/in/sarah-chen"
+    linkedin: "https://www.linkedin.com/in/manojpayani/"
   },
   {
     name: "Willie Van Aalst",
     role: "Co-Founder & CTO",
-    image: "/images/team/michael-rodriguez.jpg",
+    image: "/images/team/willie.png",
     description: "Willie brings 10+ years of experience in structural engineering and solar system design.",
-    linkedin: "https://linkedin.com/in/michael-rodriguez"
+    linkedin: "https://www.linkedin.com/in/willievanaalst/"
   },
 ];
 

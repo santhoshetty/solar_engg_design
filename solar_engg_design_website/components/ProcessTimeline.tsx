@@ -6,7 +6,10 @@ import {
   Ruler, 
   Zap,
   Cog, 
-  FileCheck2 
+  Table2,
+  GitBranch,
+  Route,
+  Calculator
 } from 'lucide-react';
 
 const steps = [
@@ -19,38 +22,59 @@ const steps = [
   },
   {
     icon: FileSearch,
-    title: "Feasibility Analysis",
+    title: "Overview Layout",
     description: "Technical and financial evaluation",
     tools: "PVsyst, HelioScope, Excel",
     color: "bg-gradient-to-br from-emerald-500 to-emerald-600"
   },
   {
     icon: Ruler,
-    title: "Preliminary Design",
+    title: "Inter-Connection SLD",
     description: "Initial layout and system sizing",
     tools: "AutoCAD, SketchUp Pro",
     color: "bg-gradient-to-br from-indigo-500 to-indigo-600"
   },
   {
     icon: Zap,
-    title: "Electrical Design",
+    title: "3D PVSyst Yield",
     description: "Detailed electrical engineering",
     tools: "AutoCAD Electrical, ETAP",
     color: "bg-gradient-to-br from-amber-500 to-amber-600"
   },
   {
     icon: Cog,
-    title: "Structural Analysis",
+    title: "Dimensional Layout",
     description: "Load calculations and mounting design",
     tools: "STAAD.Pro, RISA 3D",
     color: "bg-gradient-to-br from-rose-500 to-rose-600"
   },
   {
-    icon: FileCheck2,
-    title: "Final Documentation",
+    icon: Table2,
+    title: "String Table",
     description: "Complete engineering package",
     tools: "Adobe Acrobat, Bluebeam Revu",
     color: "bg-gradient-to-br from-teal-500 to-teal-600"
+  },
+  {
+    icon: GitBranch,
+    title: "String Plan",
+    description: "Complete engineering package",
+    tools: "Adobe Acrobat, Bluebeam Revu",
+    color: "bg-gradient-to-br from-purple-500 to-purple-600"
+  },
+  {
+    icon: Route,
+    title: "AC/DC Trajectory Layouts",
+    description: "Complete engineering package",
+    tools: "Adobe Acrobat, Bluebeam Revu",
+    color: "bg-gradient-to-br from-orange-500 to-orange-600"
+  },
+  {
+    icon: Calculator,
+    title: "AC/DC Cable Calculations",
+    description: "Complete engineering package",
+    tools: "Adobe Acrobat, Bluebeam Revu",
+    color: "bg-gradient-to-br from-cyan-500 to-cyan-600"
   }
 ];
 
