@@ -1,11 +1,11 @@
 export const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-export const STORAGE_URL = `${SUPABASE_URL}/storage/v1/object/public/public-assets`;
 
 // Helper function to get media URLs
 export const getStorageUrl = (path: string) => {
   // For development/debugging
   console.log('Getting storage URL for:', path);
-  const url = `${STORAGE_URL}/${path}`;
+  // Construct URL directly without using STORAGE_URL constant
+  const url = `${SUPABASE_URL}/storage/v1/object/public/public-assets/${path}`;
   console.log('Generated URL:', url);
   return url;
 };

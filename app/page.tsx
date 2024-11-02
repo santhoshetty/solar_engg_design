@@ -19,6 +19,10 @@ export default function Home() {
     }
   };
 
+  // Log URLs for debugging
+  console.log('Video URL:', getStorageUrl(MEDIA_PATHS.video));
+  console.log('Audio URL:', getStorageUrl(MEDIA_PATHS.audio));
+
   return (
     <main className="min-h-screen relative">
       {/* Video Background */}
@@ -39,7 +43,7 @@ export default function Home() {
           <source src={getStorageUrl(MEDIA_PATHS.audio)} type="audio/mpeg" />
         </audio>
 
-        {/* Mute Toggle Button - Moved to overlap with logo carousel */}
+        {/* Mute Toggle Button */}
         <button
           onClick={toggleMute}
           className="fixed bottom-4 right-4 z-50 p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"

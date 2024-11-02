@@ -5,6 +5,7 @@ import Hero from '@/components/Hero';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import Image from 'next/image';
 import type { ContactFormData } from '@/lib/types';
+import { getStorageUrl } from '@/lib/constants';
 
 const offices = [
   {
@@ -109,13 +110,13 @@ export default function ContactPage() {
       <Hero
         title="Contact Us"
         description="Get in touch with our solar engineering experts"
-        imagePath="/images/hero.jpg"
+        imagePath={getStorageUrl('images/hero.jpg')}
       />
 
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <Image
-            src="/images/logo/4solar-logo.png"
+            src={getStorageUrl('images/logo/4solar-logo.png')}
             alt="4Solar"
             width={48}
             height={48}

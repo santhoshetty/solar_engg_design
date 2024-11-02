@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-// Initialize Supabase client with service role key for admin access
+// Initialize Supabase client with service role key
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!; // Add this to your env variables
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
 const supabase = createClient(supabaseUrl, supabaseServiceKey, {
   auth: {
@@ -39,10 +39,12 @@ export async function POST(request: Request) {
 
     console.log('API: Attempting to insert:', submission);
 
-    // Use service role client to bypass RLS
-    const { error: insertError } = await supabase
+    // Use from() to specify the table explicitly
+    const { data: result, error: insertError } = await supabase
       .from('contact_submissions')
-      .insert(submission);
+      .insert([submission])
+      .select()
+      .single();
 
     if (insertError) {
       console.error('API: Database error:', insertError);
@@ -52,14 +54,16 @@ export async function POST(request: Request) {
       );
     }
 
+    console.log('API: Successfully inserted:', result);
+
     return NextResponse.json(
-      { message: 'Form submitted successfully' },
+      { message: 'Form submitted successfully', data: result },
       { status: 200 }
     );
   } catch (error) {
     console.error('API: Server error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }
