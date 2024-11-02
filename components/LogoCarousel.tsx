@@ -1,16 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import { getStorageUrl } from '@/lib/constants';
+import { getStorageUrl, MEDIA_PATHS } from '@/lib/constants';
 
-const companyLogos = [
-  { src: getStorageUrl('images/companies/company1.png'), alt: 'Company 1' },
-  { src: getStorageUrl('images/companies/company2.png'), alt: 'Company 2' },
-  { src: getStorageUrl('images/companies/company3.png'), alt: 'Company 3' },
-  { src: getStorageUrl('images/companies/company4.png'), alt: 'Company 4' },
-  { src: getStorageUrl('images/companies/company5.png'), alt: 'Company 5' },
-  { src: getStorageUrl('images/companies/company6.png'), alt: 'Company 6' },
-];
+const companyLogos = MEDIA_PATHS.companyLogos.map((path, index) => ({
+  src: getStorageUrl(path),
+  alt: `Company ${index + 1}`
+}));
 
 export default function LogoCarousel() {
   return (

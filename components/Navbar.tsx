@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { getStorageUrl } from '@/lib/constants';
+import { getStorageUrl, MEDIA_PATHS } from '@/lib/constants';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +22,7 @@ export default function Navbar() {
     { name: 'Contact', href: '/contact' },
   ];
 
-  const logoUrl = getStorageUrl('images/logo/4solar-logo.png');
+  const logoUrl = getStorageUrl(MEDIA_PATHS.logo);
 
   return (
     <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
