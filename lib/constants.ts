@@ -2,12 +2,15 @@ export const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 
 // Helper function to get media URLs
 export const getStorageUrl = (path: string) => {
-  // For development/debugging
-  console.log('Getting storage URL for:', path);
-  // Construct URL directly without using STORAGE_URL constant
-  const url = `${SUPABASE_URL}/storage/v1/object/public/public-assets/${path}`;
-  console.log('Generated URL:', url);
-  return url;
+    // Debug logs
+    console.log('Base URL:', SUPABASE_URL);
+    console.log('Path:', path);
+    
+    // Construct storage URL
+    const url = `${SUPABASE_URL}/storage/v1/object/public/public-assets/${path}`;
+    console.log('Generated URL:', url);
+    
+    return url;
 };
 
 // Media paths

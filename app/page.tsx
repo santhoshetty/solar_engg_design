@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LogoCarousel from '@/components/LogoCarousel';
 import Link from 'next/link';
 import { getStorageUrl, MEDIA_PATHS } from '@/lib/constants';
@@ -9,19 +9,55 @@ import { Volume2, VolumeX } from 'lucide-react';
 export default function Home() {
   const [isMuted, setIsMuted] = useState(true);
 
+  useEffect(() => {
+    // Initialize audio and video elements
+    const video = document.querySelector('video');
+    const audio = document.querySelector('audio');
+    
+    if (video && audio) {
+      // Set initial mute state
+      video.muted = isMuted;
+      audio.muted = isMuted;
+      
+      // Start playing audio if unmuted
+      if (!isMuted) {
+        audio.play().catch(error => {
+          console.error('Audio playback error:', error);
+        });
+      }
+    }
+  }, [isMuted]); // Re-run when mute state changes
+
   const toggleMute = () => {
     const video = document.querySelector('video');
     const audio = document.querySelector('audio');
+    
     if (video && audio) {
-      video.muted = !isMuted;
-      audio.muted = !isMuted;
-      setIsMuted(!isMuted);
+      const newMutedState = !isMuted;
+      
+      // Update mute state for both elements
+      video.muted = newMutedState;
+      audio.muted = newMutedState;
+      
+      // If unmuting, ensure audio plays
+      if (!newMutedState) {
+        audio.play().catch(error => {
+          console.error('Audio playback error:', error);
+        });
+      }
+      
+      setIsMuted(newMutedState);
     }
   };
 
   // Log URLs for debugging
-  console.log('Video URL:', getStorageUrl(MEDIA_PATHS.video));
-  console.log('Audio URL:', getStorageUrl(MEDIA_PATHS.audio));
+  console.log('Video path:', MEDIA_PATHS.video);
+  const videoUrl = getStorageUrl(MEDIA_PATHS.video);
+  console.log('Final video URL:', videoUrl);
+
+  console.log('Audio path:', MEDIA_PATHS.audio);
+  const audioUrl = getStorageUrl(MEDIA_PATHS.audio);
+  console.log('Final audio URL:', audioUrl);
 
   return (
     <main className="min-h-screen relative">
@@ -33,20 +69,21 @@ export default function Home() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
+          onError={(e) => console.error('Video load error:', e)}
         >
-          <source src={getStorageUrl(MEDIA_PATHS.video)} type="video/mp4" />
+          <source src={videoUrl} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/50" />
         
         {/* Background Audio */}
         <audio autoPlay loop muted={isMuted}>
-          <source src={getStorageUrl(MEDIA_PATHS.audio)} type="audio/mpeg" />
+          <source src={audioUrl} type="audio/mpeg" />
         </audio>
 
-        {/* Mute Toggle Button */}
+        {/* Mute Toggle Button - Adjusted position */}
         <button
           onClick={toggleMute}
-          className="fixed bottom-4 right-4 z-50 p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"
+          className="fixed bottom-10 right-5 z-50 p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"
           aria-label={isMuted ? 'Unmute' : 'Mute'}
         >
           {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
