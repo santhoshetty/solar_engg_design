@@ -1,15 +1,15 @@
 import VideoPlayer from '@/components/VideoPlayer';
 import LogoCarousel from '@/components/LogoCarousel';
 import Link from 'next/link';
-import { SUPABASE_URL } from '@/lib/constants';
+import { getStorageUrl } from '@/lib/constants';
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <VideoPlayer 
-        videoUrl="/videos/solar-transformation.mp4"
-        audioUrl="/audio/background-music.mp3"
-        fallbackImage={`${SUPABASE_URL}/images/solar-fallback.jpg`}
+        videoUrl={getStorageUrl('videos/solar-transformation.mp4')}
+        audioUrl={getStorageUrl('audio/background-music.mp3')}
+        fallbackImage={getStorageUrl('images/solar-fallback.jpg')}
       />
       
       {/* Hero Content */}

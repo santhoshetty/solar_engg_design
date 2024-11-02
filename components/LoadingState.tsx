@@ -1,4 +1,4 @@
-import { SUPABASE_URL } from '@/lib/constants';
+import { getStorageUrl } from '@/lib/constants';
 import Image from 'next/image';
 
 export default function LoadingState() {
@@ -6,7 +6,7 @@ export default function LoadingState() {
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
         <Image
-          src={`${SUPABASE_URL}/images/logo/4solar-logo.png`}
+          src={getStorageUrl('images/logo/4solar-logo.png')}
           alt="4Solar"
           width={80}
           height={80}

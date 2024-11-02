@@ -2,7 +2,7 @@ import Hero from '../../components/Hero';
 import Image from 'next/image';
 import { Linkedin } from 'lucide-react';
 import Link from 'next/link';
-import { SUPABASE_URL } from '../../lib/constants';
+import { getStorageUrl } from '../../lib/constants';
 
 const values = [
   {
@@ -26,14 +26,14 @@ const teamMembers = [
   {
     name: "Manoj Payani",
     role: "Co-Founder & CEO",
-    image: `${SUPABASE_URL}/images/team/manoj.png`,
+    image: getStorageUrl('images/team/manoj.png'),
     description: "With over 10 years in solar engineering and an MSc in Sustainable Energy Technology from TU Delft, Manoj leads 4Solar's vision of excellence and innovation.",
     linkedin: "https://www.linkedin.com/in/manojpayani/"
   },
   {
     name: "Willie Van Aalst",
     role: "Co-Founder & CTO",
-    image: `${SUPABASE_URL}/images/team/willie.png`,
+    image: getStorageUrl('images/team/willie.png'),
     description: "Willie brings 15+ years of experience in implementation of structural engineering and solar system design for multiple trusted clients across Europe.",
     linkedin: "https://www.linkedin.com/in/willievanaalst/"
   },
@@ -45,7 +45,7 @@ export default function AboutPage() {
       <Hero
         title="About 4Solar"
         description="Leading the way in solar engineering excellence"
-        imagePath={`${SUPABASE_URL}/images/hero.jpg`}
+        imagePath={getStorageUrl('images/hero.jpg')}
       />
 
       {/* Company History */}
@@ -74,7 +74,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold mb-8">Global Presence</h2>
           <div className="relative w-full aspect-[2/1] max-w-5xl mx-auto">
             <Image
-              src={`${SUPABASE_URL}/images/global-presence.png`}
+              src={getStorageUrl('images/global-presence.png')}
               alt="4Solar Global Presence"
               fill
               className="object-contain"

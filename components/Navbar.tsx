@@ -3,13 +3,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { SUPABASE_URL } from '@/lib/constants';
+import { getStorageUrl } from '@/lib/constants';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   
-  // Different navigation items for landing page vs other pages
   const isLandingPage = pathname === '/';
   
   const navigationItems = isLandingPage ? [
@@ -23,6 +22,8 @@ export default function Navbar() {
     { name: 'Contact', href: '/contact' },
   ];
 
+  const logoUrl = getStorageUrl('images/logo/4solar-logo.png');
+
   return (
     <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,12 +31,11 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Image
-                src={`${SUPABASE_URL}/images/logo/4solar-logo.png`}
+                src={logoUrl}
                 alt="4Solar Logo"
-                width={40}
-                height={40}
-                priority
-                className="object-contain"
+                width={48}
+                height={48}
+                className="mx-auto"
               />
               <span className="font-semibold text-xl">4Solar</span>
             </Link>

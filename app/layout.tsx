@@ -2,7 +2,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { SUPABASE_URL } from '@/lib/constants';
+import { getStorageUrl } from '@/lib/constants';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -20,7 +20,7 @@ export const metadata = {
     siteName: '4Solar Engineering Design',
     images: [
       {
-        url: `${SUPABASE_URL}/images/og-image.jpg`,
+        url: getStorageUrl('images/og-image.jpg'),
         width: 1200,
         height: 630,
       },

@@ -1,24 +1,34 @@
+import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
+export async function middleware(req: NextRequest) {
+  const res = NextResponse.next();
+  const supabase = createMiddlewareClient({ req, res });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || req.nextUrl.origin;
+
   try {
-    // Simple middleware that just forwards the request
-    return NextResponse.next();
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    // If accessing admin page without auth, redirect to login
+    if (!session && req.nextUrl.pathname.startsWith('/admin')) {
+      return NextResponse.redirect(new URL('/login', baseUrl));
+    }
+
+    // If accessing login page with auth, redirect to admin
+    if (session && req.nextUrl.pathname === '/login') {
+      return NextResponse.redirect(new URL('/admin', baseUrl));
+    }
+
+    return res;
   } catch (error) {
     console.error('Middleware error:', error);
-    // Return a basic response in case of error
-    return NextResponse.next();
+    return NextResponse.redirect(new URL('/login', baseUrl));
   }
 }
 
-// Simplify the matcher to only handle essential paths
 export const config = {
-  matcher: [
-    // Optional: Add specific paths you want to handle
-    // '/',
-    // '/about',
-    // '/services/:path*',
-    // '/projects/:path*'
-  ]
+  matcher: ['/admin/:path*', '/login']
 }; 

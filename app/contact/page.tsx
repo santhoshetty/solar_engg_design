@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Hero from '@/components/Hero';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import Image from 'next/image';
+import type { ContactFormData } from '@/lib/types';
 
 const offices = [
   {
@@ -24,7 +25,7 @@ const offices = [
 ];
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     company: '',
@@ -33,13 +34,70 @@ export default function ContactPage() {
     message: '',
   });
 
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement form submission logic
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      // Basic validation
+      if (!formData.name || !formData.email || !formData.message) {
+        throw new Error('Please fill in all required fields');
+      }
+
+      console.log('Submitting form data:', formData);
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      console.log('Response:', { status: response.status, data });
+
+      if (!response.ok) {
+        throw new Error(data.error || data.details || 'Failed to submit form');
+      }
+
+      // Clear form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        phone: '',
+        projectType: '',
+        message: '',
+      });
+
+      setSubmitStatus({
+        type: 'success',
+        message: 'Thank you for your message. We will get back to you soon!',
+      });
+
+    } catch (error: any) {
+      console.error('Form submission error:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: error?.message || 'There was an error submitting your message. Please try again.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
@@ -116,6 +174,18 @@ export default function ContactPage() {
             <h2 className="text-2xl font-bold mb-8">Send Us a Message</h2>
             
             <div className="bg-white p-8 rounded-lg shadow-sm">
+              {submitStatus.type && (
+                <div 
+                  className={`mb-6 p-4 rounded-md ${
+                    submitStatus.type === 'success' 
+                      ? 'bg-green-50 text-green-700' 
+                      : 'bg-red-50 text-red-700'
+                  }`}
+                >
+                  {submitStatus.message}
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -215,9 +285,14 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full bg-primary text-white font-semibold py-3 px-6 rounded-md hover:bg-primary/90 transition-colors"
+                  disabled={isSubmitting}
+                  className={`w-full bg-primary text-white font-semibold py-3 px-6 rounded-md 
+                    ${isSubmitting 
+                      ? 'opacity-50 cursor-not-allowed' 
+                      : 'hover:bg-primary/90'} 
+                    transition-colors`}
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>

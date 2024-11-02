@@ -1,9 +1,9 @@
-const path = require('path');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
   images: {
+    domains: ['xiafttjgrzpgaidayege.supabase.co'],
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -12,17 +12,7 @@ const nextConfig = {
         pathname: '/storage/v1/object/public/public-assets/**',
       },
     ],
-    unoptimized: true,
-  },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@/components': path.join(__dirname, 'components'),
-      '@/lib': path.join(__dirname, 'lib'),
-      '@/app': path.join(__dirname, 'app'),
-    };
-    return config;
-  },
+  }
 };
 
 module.exports = nextConfig; 
