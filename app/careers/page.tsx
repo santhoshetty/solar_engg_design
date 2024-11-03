@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Hero from '@/components/Hero';
 import { Upload, Linkedin } from 'lucide-react';
 import Link from 'next/link';
+import { getStorageUrl, MEDIA_PATHS } from '@/lib/constants';
 
 const openPositions = [
   {
@@ -35,7 +36,7 @@ export default function CareersPage() {
       <Hero
         title="Join Our Team"
         description="Build your career in solar engineering"
-        imagePath="/images/hero.jpg"
+        imagePath={getStorageUrl(MEDIA_PATHS.hero)}
       />
 
       <div className="container mx-auto px-4 py-16">

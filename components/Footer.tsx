@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { SUPABASE_URL } from '@/lib/constants';
+import { getStorageUrl } from '@/lib/constants';
 
 export default function Footer() {
   return (
@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="mb-8 md:mb-0">
             <Link href="/" className="flex items-center mb-4">
               <Image
-                src={`${SUPABASE_URL}/images/logo/4solar-logo.png`}
+                src={getStorageUrl('images/logo/4solar-logo.webp')}
                 alt="4Solar"
                 width={48}
                 height={48}

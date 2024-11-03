@@ -67,7 +67,7 @@ export default function ProjectsPage() {
       <Hero
         title="Our Projects"
         description="Discover our portfolio of successful solar installations"
-        imagePath={`${SUPABASE_URL}/images/hero.jpg`}
+        imagePath={`${SUPABASE_URL}/images/hero.webp`}
       />
 
       <div className="container mx-auto px-4 py-16">

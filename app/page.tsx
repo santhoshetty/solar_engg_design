@@ -70,6 +70,8 @@ export default function Home() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
           onError={(e) => console.error('Video load error:', e)}
+          preload="auto"
+          poster={getStorageUrl(MEDIA_PATHS.hero)} // Use hero image as placeholder while video loads
         >
           <source src={videoUrl} type="video/mp4" />
         </video>

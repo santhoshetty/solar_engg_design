@@ -45,7 +45,7 @@ export default function AboutPage() {
       <Hero
         title="About 4Solar"
         description="Leading the way in solar engineering excellence"
-        imagePath={getStorageUrl('images/hero.jpg')}
+        imagePath={getStorageUrl('images/hero.webp')}
       />
 
       {/* Company History */}
@@ -74,7 +74,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold mb-8">Global Presence</h2>
           <div className="relative w-full aspect-[2/1] max-w-5xl mx-auto">
             <Image
-              src={getStorageUrl('images/global-presence.png')}
+              src={getStorageUrl('images/global-presence.webp')}
               alt="4Solar Global Presence"
               fill
               className="object-contain"

@@ -110,13 +110,13 @@ export default function ContactPage() {
       <Hero
         title="Contact Us"
         description="Get in touch with our solar engineering experts"
-        imagePath={getStorageUrl('images/hero.jpg')}
+        imagePath={getStorageUrl('images/hero.webp')}
       />
 
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <Image
-            src={getStorageUrl('images/logo/4solar-logo.png')}
+            src={getStorageUrl('images/logo/4solar-logo.webp')}
             alt="4Solar"
             width={48}
             height={48}

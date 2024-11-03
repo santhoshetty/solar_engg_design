@@ -1,11 +1,12 @@
 import Image from 'next/image';
+import { getStorageUrl } from '@/lib/constants';
 
 export default function EmailTemplate() {
   return (
     <div className="email-container">
       <div className="email-header">
         <Image
-          src="/images/logo/4solar-logo.png"
+          src={getStorageUrl('images/logo/4solar-logo.webp')}
           alt="4Solar"
           width={40}
           height={40}

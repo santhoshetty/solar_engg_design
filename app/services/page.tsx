@@ -8,7 +8,7 @@ export default function ServicesPage() {
       <Hero
         title="Our Services"
         description="Professional solar engineering solutions tailored to your project needs"
-        imagePath={getStorageUrl('images/hero.jpg')}
+        imagePath={getStorageUrl('images/hero.webp')}
       />
 
       {/* Process Timeline */}

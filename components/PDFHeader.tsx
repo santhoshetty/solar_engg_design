@@ -1,10 +1,11 @@
 import Image from 'next/image';
+import { getStorageUrl } from '@/lib/constants';
 
 export default function PDFHeader() {
   return (
     <div className="pdf-header flex items-center justify-between p-4 border-b">
       <Image
-        src="/images/logo/4solar-logo.png"
+        src={getStorageUrl('images/logo/4solar-logo.webp')}
         alt="4Solar"
         width={32}
         height={32}

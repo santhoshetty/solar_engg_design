@@ -15,22 +15,22 @@ export const getStorageUrl = (path: string) => {
 
 // Media paths
 export const MEDIA_PATHS = {
-  logo: 'images/logo/4solar-logo.png',
-  hero: 'images/hero.jpg',
+  logo: 'images/logo/4solar-logo.webp',
+  hero: 'images/hero.webp',
   video: 'videos/solar-transformation.mp4',
   audio: 'audio/background-music.mp3',
   ogImage: 'images/og-image.jpg',
-  globalPresence: 'images/global-presence.png',
+  globalPresence: 'images/global-presence.webp',
   teamMembers: {
     manoj: 'images/team/manoj.png',
     willie: 'images/team/willie.png'
   },
   companyLogos: [
-    'images/companies/company1.png',
-    'images/companies/company2.png',
-    'images/companies/company3.png',
-    'images/companies/company4.png',
-    'images/companies/company5.png',
-    'images/companies/company6.png'
+    'images/companies/company1.webp',
+    'images/companies/company2.webp',
+    'images/companies/company3.webp',
+    'images/companies/company4.webp',
+    'images/companies/company5.webp',
+    'images/companies/company6.webp'
   ]
 };

@@ -107,7 +107,7 @@ solar_engg_design_website
 │   │   ├── about
 │   │   ├── companies
 │   │   ├── global-presence.png
-│   │   ├── hero.jpg
+│   │   ├── hero.webp
 │   │   ├── logo
 │   │   ├── projects
 │   │   ├── services
