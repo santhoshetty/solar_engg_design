@@ -1,5 +1,3 @@
-import { getStorageUrl } from '@/lib/constants';
-
 interface HeroProps {
   title: string;
   description: string;
@@ -9,7 +7,6 @@ interface HeroProps {
 export default function Hero({ title, description, imagePath }: HeroProps) {
   return (
     <div className="relative h-[40vh] md:h-[50vh] flex items-center justify-center">
-      {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ 
@@ -20,7 +17,6 @@ export default function Hero({ title, description, imagePath }: HeroProps) {
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 text-center text-white px-4">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           {title}
